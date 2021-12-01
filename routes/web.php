@@ -39,5 +39,8 @@ Route::post('/admin/login', 'AdminController@adminLogin')->name('admin.login');
 Route::get('/admin/logout', 'AdminController@adminLogout')->name('admin.logout');
 Route::get('/admin/products', 'AdminController@getProducts')->name('admin.products');
 Route::get('/admin/orders', 'AdminController@getOrders')->name('admin.orders');
+Route::get('/admin/categories', 'AdminController@getCategories')->name('admin.categories');
 //orders routes
 Route::resource('orders', 'OrderController');
+
+Route::resource('categories', 'CategoryController');

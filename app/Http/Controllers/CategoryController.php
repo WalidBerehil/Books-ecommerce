@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -24,7 +26,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.categories.create");
+        
     }
 
     /**
@@ -35,7 +38,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validation
+        $this->validate($request, [
+            "title" => "required|min:3",
+        ]);
+
+        //add data
+
+            $title = $request->title;
+
+            Category::create([
+                "title" => $title,
+                "slug" => Str::slug($title),
+
+            ]);
+            return redirect()->route("admin.categories")
+                ->withSuccess("Category added");
     }
 
     /**
@@ -58,6 +76,9 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
+        return view("admin.categories.edit")->with([
+            "category" => $category
+        ]);
     }
 
     /**
@@ -70,6 +91,20 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
+                //validation
+                $this->validate($request, [
+                    "title" => "required|min:3"
+                ]);
+        
+                //update data
+
+                $title = $request->title;
+                $category->update([
+                    "title" => $title,
+                    "slug" => Str::slug($title),
+                ]);
+                return redirect()->route("admin.categories")
+                    ->withSuccess("Category updated");
     }
 
     /**
@@ -81,5 +116,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        $category->delete();
+        return redirect()->back()->withSuccess("Category deleted");
     }
 }

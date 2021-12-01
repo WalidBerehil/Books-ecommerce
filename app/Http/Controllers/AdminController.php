@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Order;
 use App\Product;
 use Illuminate\Http\Request;
@@ -62,6 +63,13 @@ class AdminController extends Controller
     {
         return view("admin.orders.index")->with([
             "orders" => Order::latest()->paginate(5)
+        ]);
+    }
+
+    public function getCategories()
+    {
+        return view("admin.categories.index")->with([
+            "categories" => Category::latest()->paginate(5)
         ]);
     }
 }

@@ -13,4 +13,11 @@
     <i class="fa fa-credit-card"></i>
     Orders
     </a>
+    <a href="{{ route("admin.categories") }}" class="list-group-item
+        font-weight-bold
+        list-group-item-action
+    ">
+    <i class="fa fa-credit-card"></i>
+    Categories
+    </a>
 </ul>
