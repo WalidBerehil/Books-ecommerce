@@ -17,6 +17,7 @@ $factory->define(Product::class, function (Faker $faker) {
         "old_price" => $faker->numberBetween($min = 100, $max = 900),
         "inStock" => $faker->numberBetween($min = 1, $max = 10),
         "image" => $faker->imageUrl($width = 640, $height = 480),
-        "category_id" => $faker->numberBetween($min = 1, $max = 10)
+        "category_id" => $faker->numberBetween($min = 1, $max = 10),
+        "author_id" => $faker->numberBetween($min = 1, $max = 10)
     ];
 });

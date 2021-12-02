@@ -71,6 +71,20 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <select name="author_id" class="form-control">
+                                <option value="" selected disabled>
+                                    Choose an author 
+                                </option>
+                                @foreach ($authors as $author)
+                                    <option
+                                    {{ $product->author_id === $author->id ? "selected" : "" }}
+                                    value="{{ $author->id }}">
+                                        {{ $author->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <button type="submit" class="btn btn-primary">
                                 Submit
                             </button>

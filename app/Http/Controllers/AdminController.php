@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Category;
 use App\Order;
 use App\Product;
@@ -70,6 +71,13 @@ class AdminController extends Controller
     {
         return view("admin.categories.index")->with([
             "categories" => Category::latest()->paginate(5)
+        ]);
+    }
+
+    public function getAuthors()
+    {
+        return view("admin.authors.index")->with([
+            "authors" => Author::latest()->paginate(5)
         ]);
     }
 }

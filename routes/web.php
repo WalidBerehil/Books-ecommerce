@@ -23,6 +23,7 @@ Route::get('/resend/{email}', 'ActivationController@resendActivationCode')->name
 //products routes
 Route::resource('products', 'ProductController');
 Route::get('products/category/{category}', 'HomeController@getProductByCategory')->name("category.products");
+Route::get('products/author/{author}', 'HomeController@getProductByAuthor')->name("author.products");
 //cart routes
 Route::get('/cart', 'CartController@index')->name('cart.index');
 Route::post('/add/cart/{product}', 'CartController@addProductToCart')->name('add.cart');
@@ -40,7 +41,10 @@ Route::get('/admin/logout', 'AdminController@adminLogout')->name('admin.logout')
 Route::get('/admin/products', 'AdminController@getProducts')->name('admin.products');
 Route::get('/admin/orders', 'AdminController@getOrders')->name('admin.orders');
 Route::get('/admin/categories', 'AdminController@getCategories')->name('admin.categories');
+Route::get('/admin/authors', 'AdminController@getAuthors')->name('admin.authors');
 //orders routes
 Route::resource('orders', 'OrderController');
 
 Route::resource('categories', 'CategoryController');
+
+Route::resource('authors', 'AuthorController');

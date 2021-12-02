@@ -17,6 +17,9 @@
                     <p class="text-dark font-weight-bold">
                         {{ $product->category->title }}
                     </p>
+                    <p class="text-dark font-weight-bold">
+                        {{ $product->author->name }}
+                    </p>
                     <p class="d-flex flex-row justify-content-between align-items-center">
                         <span class="text-muted">
                             {{ $product->price }} $

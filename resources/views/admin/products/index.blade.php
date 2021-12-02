@@ -23,6 +23,7 @@
                         <th>In Stock</th>
                         <th>Image</th>
                         <th>Category</th>
+                        <th>Author</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -51,6 +52,9 @@
                             </td>
                             <td>
                                 {{ $product->category->title }}
+                            </td>
+                            <td>
+                                {{ $product->author->name }}
                             </td>
                             <td class="d-flex flex-row justify-content-center align-items-center">
                                 <a

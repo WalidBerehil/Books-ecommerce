@@ -48,6 +48,7 @@
             </div>
         </div>
         <div class="col-md-4">
+        <div class="col-md-12">
             <div class="list-group">
                 <li class="list-group-item active">
                     Categories
@@ -60,6 +61,21 @@
                     </a>
                 @endforeach
             </div>
+        </div>
+        <div class="col-md-12">
+            <div class="list-group">
+                <li class="list-group-item active">
+                    Author
+                </li>
+                @foreach ($authors as $author)
+                    <a href="{{ route("author.products",$author->slug) }}"
+                        class="list-group-item list-group-item-action">
+                        {{ $author->name }}
+                        ({{ $author->products->count() }})
+                    </a>
+                @endforeach
+            </div>
+        </div>
         </div>
     </div>
 </div>

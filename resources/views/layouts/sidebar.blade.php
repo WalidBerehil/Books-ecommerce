@@ -20,4 +20,11 @@
     <i class="fa fa-credit-card"></i>
     Categories
     </a>
+    <a href="{{ route("admin.authors") }}" class="list-group-item
+        font-weight-bold
+        list-group-item-action
+    ">
+    <i class="fa fa-credit-card"></i>
+    Authors
+    </a>
 </ul>

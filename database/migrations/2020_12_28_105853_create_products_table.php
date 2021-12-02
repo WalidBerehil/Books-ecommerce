@@ -23,9 +23,11 @@ class CreateProductsTable extends Migration
             $table->integer("inStock")->default(0);
             $table->string("image");
             $table->bigInteger("category_id")->unsigned();
+            $table->bigInteger("author_id")->unsigned();
 
             $table->timestamps();
             $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade");
+            $table->foreign("author_id")->references("id")->on("authors")->onDelete("cascade");
         });
     }
 

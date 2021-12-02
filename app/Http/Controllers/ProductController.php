@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Author;
 use App\Product;
 use App\Category;
 use Illuminate\Support\Facades\File;
@@ -27,6 +28,7 @@ class ProductController extends Controller
         return view('home')->with([
             "products" => Product::latest()->paginate(10),
             "categories" => Category::has("products")->get(),
+            "authors" => Author::has("products")->get(),
         ]);
     }
 
@@ -39,7 +41,8 @@ class ProductController extends Controller
     {
         //
         return view("admin.products.create")->with([
-            "categories" => Category::all()
+            "categories" => Category::all(),
+            "authors" => Author::all()
         ]);
     }
 
@@ -58,6 +61,7 @@ class ProductController extends Controller
             "image" => "required|image|mimes:png,jpg,jpeg|max:2048",
             "price" => "required|numeric",
             "category_id" => "required|numeric",
+            "author_id" => "required|numeric",
         ]);
 
         //add data
@@ -75,6 +79,7 @@ class ProductController extends Controller
                 "old_price" => $request->old_price,
                 "inStock" => $request->inStock,
                 "category_id" => $request->category_id,
+                "author_id" => $request->author_id,
                 "image" => $imageName,
             ]);
             return redirect()->route("admin.products")
@@ -107,7 +112,8 @@ class ProductController extends Controller
         //
         return view("admin.products.edit")->with([
             "product" => $product,
-            "categories" => Category::all()
+            "categories" => Category::all(),
+            "authors" => Author::all()
         ]);
     }
 
@@ -127,6 +133,7 @@ class ProductController extends Controller
             "image" => "image|mimes:png,jpg,jpeg|max:2048",
             "price" => "required|numeric",
             "category_id" => "required|numeric",
+            "author_id" => "required|numeric",
         ]);
 
         //update data
@@ -149,6 +156,7 @@ class ProductController extends Controller
             "old_price" => $request->old_price,
             "inStock" => $request->inStock,
             "category_id" => $request->category_id,
+            "author_id" => $request->author_id,
             "image" =>  $product->image,
         ]);
         return redirect()->route("admin.products")
