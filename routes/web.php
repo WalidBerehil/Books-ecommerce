@@ -33,6 +33,10 @@ Route::put('/update/{product}/cart', 'CartController@updateProductOnCart')->name
 Route::get('/handle-payment', 'PaypalPaymentController@handlePayment')->name('make.payment');
 Route::get('/cancel-payment', 'PaypalPaymentController@paymentCancel')->name('cancel.payment');
 Route::get('/payment-success', 'PaypalPaymentController@paymentSuccess')->name('success.payment');
+
+Route::get('/paymentcash-success', 'CashPaymentController@paymentSuccess')->name('cash.payment');
+
+
 //admin routes
 Route::get('/admin', 'AdminController@index')->name('admin.index');
 Route::get('/admin/login', 'AdminController@showAdminLoginForm')->name('admin.login');

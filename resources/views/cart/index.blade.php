@@ -84,6 +84,9 @@
                     <a href="{{ route("make.payment") }}" class="btn btn-primary mt-3">
                         Pay {{ Cart::getSubtotal() }} $ via PayPal
                     </a>
+                    <a href="{{ route("cash.payment") }}" class="btn btn-secondary mt-3">
+                        Pay {{ Cart::getSubtotal() }} $ via Cash
+                    </a>
                 </div>
             @endif
         </div>
