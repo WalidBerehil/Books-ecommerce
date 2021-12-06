@@ -3,10 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-4">
-            @include('layouts.sidebar')
-        </div>
-        <div class="col-md-8">
+
+        <div class="col-md-12">
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -45,7 +43,7 @@
                             @endif
                         </td>
                         <td class="d-flex flex-row justify-content-center align-items-center">
-                            <a href="{{ route("orders.show",$order->id) }}" class="btn btn-sm btn-warning mr-2">
+                            <a href="{{ route("orders.uo",Crypt::encrypt($order->id)) }}" class="btn btn-sm btn-warning mr-2">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <form method="POST" action="{{ route("orders.update",$order->id) }}">

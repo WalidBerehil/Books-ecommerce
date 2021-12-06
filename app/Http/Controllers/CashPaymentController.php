@@ -26,7 +26,7 @@ class CashPaymentController extends Controller
         }
         $order = Order::create([
             "user_id" => auth()->user()->id,
-            "product_name" => "waiting...",
+            "status" => "waiting...",
             "total" => $total,
             "qty" => 1,
             "price" => 2,

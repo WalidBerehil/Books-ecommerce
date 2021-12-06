@@ -64,7 +64,7 @@ class PaypalPaymentController extends Controller
             foreach (\Cart::getContent() as $item) {
                 Order::create([
                     "user_id" => auth()->user()->id,
-                    "product_name" => $item->name,
+                    "status" => $item->name,
                     "qty" => $item->quantity,
                     "price" => $item->price,
                     "total" => $item->price * $item->quantity,

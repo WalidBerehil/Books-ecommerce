@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Author;
 use App\Category;
 use App\Order;
+use App\Order_Product;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin')
-            ->except(["showAdminLoginForm", "adminLogin"]);
+            ->except(["showAdminLoginForm", "adminLogin", "UserToOrders"]);
     }
 
     public function index()
@@ -62,6 +63,7 @@ class AdminController extends Controller
 
     public function getOrders()
     {
+
         return view("admin.orders.index")->with([
             "orders" => Order::latest()->paginate(5)
         ]);
@@ -78,6 +80,35 @@ class AdminController extends Controller
     {
         return view("admin.authors.index")->with([
             "authors" => Author::latest()->paginate(5)
+        ]);
+    }
+
+    public function UserToOrders()
+    {
+        return view("user.orders.index")->with([
+            "orders" => Order::where('user_id', auth()->user()->id)->latest()->paginate(5)
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Order  $order
+     * @return \Illuminate\Http\Response
+     */
+    public function showOrderProducts($order)
+    {
+        dd($order);
+        //
+        $total = 0;
+        foreach (Order_Product::where("order_id", $order->id)->get() as $item) {
+
+            $total += $item->price * $item->qty;
+        }
+        return view("admin.orders.show")->with([
+            "order" => $order,
+            "order_products" => Order_Product::where("order_id", $order->id)->get(),
+            "total" => $total
         ]);
     }
 }

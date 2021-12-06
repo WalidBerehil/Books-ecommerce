@@ -46,7 +46,10 @@ Route::get('/admin/products', 'AdminController@getProducts')->name('admin.produc
 Route::get('/admin/orders', 'AdminController@getOrders')->name('admin.orders');
 Route::get('/admin/categories', 'AdminController@getCategories')->name('admin.categories');
 Route::get('/admin/authors', 'AdminController@getAuthors')->name('admin.authors');
+Route::get('/admin/user', 'AdminController@getAUserToOrdersuthors')->name('admin.userss');
 //orders routes
+Route::get('/orders', 'OrderController@index')->name('user.orders');
+Route::get('/orders/user/{id}', 'OrderController@userOrder')->name('orders.uo');
 Route::resource('orders', 'OrderController');
 
 Route::resource('categories', 'CategoryController');

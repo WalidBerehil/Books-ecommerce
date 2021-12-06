@@ -9,6 +9,12 @@ use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -27,7 +33,6 @@ class CategoryController extends Controller
     public function create()
     {
         return view("admin.categories.create");
-        
     }
 
     /**
@@ -45,15 +50,15 @@ class CategoryController extends Controller
 
         //add data
 
-            $title = $request->title;
+        $title = $request->title;
 
-            Category::create([
-                "title" => $title,
-                "slug" => Str::slug($title),
+        Category::create([
+            "title" => $title,
+            "slug" => Str::slug($title),
 
-            ]);
-            return redirect()->route("admin.categories")
-                ->withSuccess("Category added");
+        ]);
+        return redirect()->route("admin.categories")
+            ->withSuccess("Category added");
     }
 
     /**
@@ -91,20 +96,20 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
-                //validation
-                $this->validate($request, [
-                    "title" => "required|min:3"
-                ]);
-        
-                //update data
+        //validation
+        $this->validate($request, [
+            "title" => "required|min:3"
+        ]);
 
-                $title = $request->title;
-                $category->update([
-                    "title" => $title,
-                    "slug" => Str::slug($title),
-                ]);
-                return redirect()->route("admin.categories")
-                    ->withSuccess("Category updated");
+        //update data
+
+        $title = $request->title;
+        $category->update([
+            "title" => $title,
+            "slug" => Str::slug($title),
+        ]);
+        return redirect()->route("admin.categories")
+            ->withSuccess("Category updated");
     }
 
     /**

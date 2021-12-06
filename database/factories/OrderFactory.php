@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Order::class, function (Faker $faker) {
     return [
         //
-        "product_name" => $faker->sentence,
+        "status" => $faker->sentence,
         "qty" => $faker->numberBetween($min = 1, $max = 10),
         "price" => $faker->numberBetween($min = 100, $max = 900),
         "total" => $faker->numberBetween($min = 1000, $max = 9000),

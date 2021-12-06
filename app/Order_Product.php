@@ -12,13 +12,18 @@ class Order_Product extends Model
         "price"
     ];
 
-    public function orders()
-    {
-        return $this->belongsToMany(Order::class,'orders_products','products_id','order_id');
-    }
+    // public function orders()
+    // {
+    //     return $this->belongsToMany(Order::class,'orders_products','products_id','order_id');
+    // }
 
-    public function products()
+    // public function products()
+    // {
+    //     return $this->belongsToMany(Product::class,'orders_products','order_id','products_id');
+    // }
+
+    public function product()
     {
-        return $this->belongsToMany(Product::class,'orders_products','order_id','products_id');
+        return $this->belongsTo(Product::class);
     }
 }

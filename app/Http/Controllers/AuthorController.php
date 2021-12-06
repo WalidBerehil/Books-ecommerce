@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -44,15 +49,15 @@ class AuthorController extends Controller
 
         //add data
 
-            $name = $request->name;
+        $name = $request->name;
 
-            Author::create([
-                "name" => $name,
-                "slug" => Str::slug($name),
+        Author::create([
+            "name" => $name,
+            "slug" => Str::slug($name),
 
-            ]);
-            return redirect()->route("admin.authors")
-                ->withSuccess("Author added");
+        ]);
+        return redirect()->route("admin.authors")
+            ->withSuccess("Author added");
     }
 
     /**
