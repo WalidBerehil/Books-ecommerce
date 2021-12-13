@@ -11,7 +11,7 @@
                         <th>Id</th>
                         <th>Client</th>
                         <th>Status</th>
-                        <th>Qty</th>
+                        <th>Qty(N° Products)</th>
                         <th>Price</th>
                         <th>Total</th>
                         <th>Paid</th>
@@ -32,37 +32,21 @@
                             @if($order->paid)
                             <i class="fa fa-check text-success"></i>
                             @else
-                            <i class="fa fa-times text-danger"></i>
+                            <i class="fa fa-hourglass-half text-danger"></i>
                             @endif
                         </td>
                         <td>
                             @if($order->delivered)
                             <i class="fa fa-check text-success"></i>
                             @else
-                            <i class="fa fa-times text-danger"></i>
+                            <i class="fa fa-hourglass-half text-danger"></i>
                             @endif
                         </td>
                         <td class="d-flex flex-row justify-content-center align-items-center">
-                            <a href="{{ route("orders.uo",Crypt::encrypt($order->id)) }}" class="btn btn-sm btn-warning mr-2">
-                                <i class="fa fa-edit"></i>
+                            <a href="{{ route("orders.uo",Crypt::encrypt($order->id)) }}" class="btn btn-sm btn-warning small-icon-action mr-2">
+                                <i class="fa fa-info"></i>
                             </a>
-                            <form method="POST" action="{{ route("orders.update",$order->id) }}">
-                                @csrf
-                                @method("PUT")
-                                <button class="btn btn-sm btn-success">
-                                    <i class="fa fa-check"></i>
-                                </button>
-                            </form>
-                            <form id="{{ $order->id }}" method="POST" action="{{ route("orders.destroy",$order->id) }}">
-                                @csrf
-                                @method("DELETE")
-                                <button onclick="event.preventDefault();
-                                       if(confirm('Do you really want to delete the order {{ $order->id  }} ?'))
-                                        document.getElementById({{ $order->id }}).submit();
-                                    " class="btn btn-sm btn-danger">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                            </form>
+
                         </td>
                     </tr>
                     @endforeach

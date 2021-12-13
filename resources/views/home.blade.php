@@ -3,6 +3,20 @@
 @section('content')
 <div class="container">
     <div class="row">
+        <form method="get" action="{{ route("home") }}" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <input type="text" name="search" placeholder="Search" class="form-control">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="row">
+
         <div class="col-md-8">
             <div class="card">
                 <h3 class="card-header">New Products !</h3>

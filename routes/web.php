@@ -55,3 +55,6 @@ Route::resource('orders', 'OrderController');
 Route::resource('categories', 'CategoryController');
 
 Route::resource('authors', 'AuthorController');
+
+Route::resource('users', 'UserController');
+Route::get('/profile', 'UserController@edit')->name('user.profile');

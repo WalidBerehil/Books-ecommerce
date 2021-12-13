@@ -24,13 +24,31 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home')->with([
-            "products" => Product::latest()->paginate(10),
-            "categories" => Category::has("products")->get(),
-            "authors" => Author::has("products")->get(),
-        ]);
+        if (!empty(request('search'))) {
+            return view('home')->with([
+                "products" => Product::where(function ($query) {
+                    $query->where('title', 'like', '%' . request('search') . '%')
+                        ->orWhere('description', 'like', '%' . request('search') . '%');
+                })->orwhereHas('category', function ($query) {
+                    $query->where('title', 'like', '%' . request('search') . '%');
+                })->orwhereHas('author', function ($query) {
+                    $query->where('name', 'like', '%' . request('search') . '%');
+                })
+                    ->latest()->paginate(10),
+
+
+                "categories" => Category::has("products")->get(),
+                "authors" => Author::has("products")->get(),
+            ]);
+        } else {
+            return view('home')->with([
+                "products" => Product::latest()->paginate(10),
+                "categories" => Category::has("products")->get(),
+                "authors" => Author::has("products")->get(),
+            ]);
+        }
     }
 
     /**
@@ -50,7 +68,7 @@ class HomeController extends Controller
     }
 
 
-        /**
+    /**
      * Show products by category.
      *
      * @return \Illuminate\Contracts\Support\Renderable
