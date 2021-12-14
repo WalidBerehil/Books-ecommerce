@@ -7,6 +7,21 @@
             @include('layouts.sidebar')
         </div>
         <div class="col-md-8">
+            <!--Search -->
+            <div>
+                <form method="get" action="{{ route("admin.orders") }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="Search" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!--End of Search -->
             <table class="table table-hover">
                 <thead>
                     <tr>

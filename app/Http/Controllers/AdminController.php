@@ -22,7 +22,10 @@ class AdminController extends Controller
     {
         return view("admin.index")->with([
             "products" => Product::all(),
-            "orders" => Order::all()
+            "orders" => Order::all(),
+            "categories" => Category::all(),
+            "authors" => Author::all()
+
         ]);
     }
 
@@ -56,31 +59,106 @@ class AdminController extends Controller
 
     public function getProducts()
     {
-        return view("admin.products.index")->with([
-            "products" => Product::latest()->paginate(5)
-        ]);
+
+        if (!empty(request('search'))) {
+            return view('admin.products.index')->with([
+                "products" => Product::where(function ($query) {
+                    $query->where('title', 'like', '%' . request('search') . '%')
+                        ->orWhere('description', 'like', '%' . request('search') . '%');
+                })->orwhereHas('category', function ($query) {
+                    $query->where('title', 'like', '%' . request('search') . '%');
+                })->orwhereHas('author', function ($query) {
+                    $query->where('name', 'like', '%' . request('search') . '%');
+                })
+                    ->latest()->paginate(5),
+
+
+                "categories" => Category::has("products")->get(),
+                "authors" => Author::has("products")->get(),
+            ]);
+        } else {
+            return view('admin.products.index')->with([
+                "products" => Product::latest()->paginate(5),
+                "categories" => Category::has("products")->get(),
+                "authors" => Author::has("products")->get(),
+            ]);
+        }
+
+        //without search
+
+        // return view("admin.products.index")->with([
+        //     "products" => Product::latest()->paginate(5)
+        // ]);
     }
 
     public function getOrders()
     {
+        if (!empty(request('search'))) {
+            return view('admin.orders.index')->with([
+                "orders" => Order::where(function ($query) {
+                    $query->where('qty', 'like', request('search'))
+                        ->orWhere('total', 'like', request('search'));
+                })->orwhereHas('user', function ($query) {
+                    $query->where('name', 'like', '%' . request('search') . '%')
+                        ->orWhere('email', 'like', request('search'))
+                        ->orWhere('phone', 'like', request('search'))
+                        ->orWhere('country', 'like', request('search'))
+                        ->orWhere('city', 'like', request('search'));
+                })->latest()->paginate(5),
 
-        return view("admin.orders.index")->with([
-            "orders" => Order::latest()->paginate(5)
-        ]);
+            ]);
+        } else {
+            return view('admin.orders.index')->with([
+                "orders" => Order::latest()->paginate(5)
+            ]);
+        }
+
+        // return view("admin.orders.index")->with([
+        //     "orders" => Order::latest()->paginate(5)
+        // ]);
     }
 
     public function getCategories()
     {
-        return view("admin.categories.index")->with([
-            "categories" => Category::latest()->paginate(5)
-        ]);
+        if (!empty(request('search'))) {
+            return view('admin.categories.index')->with([
+                "categories" => Category::where(function ($query) {
+                    $query->where('title', 'like', '%' . request('search') . '%')
+                        ->orWhere('slug', 'like', '%' . request('search') . '%');
+                })->latest()->paginate(5),
+
+            ]);
+        } else {
+            return view('admin.categories.index')->with([
+                "categories" => Category::latest()->paginate(5)
+            ]);
+        }
+
+        // return view("admin.categories.index")->with([
+        //     "categories" => Category::latest()->paginate(5)
+        // ]);
     }
 
     public function getAuthors()
     {
-        return view("admin.authors.index")->with([
-            "authors" => Author::latest()->paginate(5)
-        ]);
+
+        if (!empty(request('search'))) {
+            return view('admin.authors.index')->with([
+                "authors" => Author::where(function ($query) {
+                    $query->where('name', 'like', '%' . request('search') . '%')
+                        ->orWhere('slug', 'like', '%' . request('search') . '%');
+                })->latest()->paginate(5),
+
+            ]);
+        } else {
+            return view('admin.authors.index')->with([
+                "authors" => Author::latest()->paginate(5)
+            ]);
+        }
+
+        // return view("admin.authors.index")->with([
+        //     "authors" => Author::latest()->paginate(5)
+        // ]);
     }
 
     public function UserToOrders()

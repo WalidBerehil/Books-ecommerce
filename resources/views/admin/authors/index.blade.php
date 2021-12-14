@@ -7,6 +7,21 @@
             @include('layouts.sidebar')
         </div>
         <div class="col-md-8">
+            <!--Search -->
+            <div>
+                <form method="get" action="{{ route("admin.authors") }}" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <input type="text" name="search" placeholder="Search" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <!--End of Search -->
             <a href="{{ route("authors.create") }}" class="btn btn-primary my-2">
                 <i class="fa fa-plus"></i>
             </a>
