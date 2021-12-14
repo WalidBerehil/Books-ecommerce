@@ -3,14 +3,22 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Product extends Model
 {
+    use Sortable;
     //
     protected $fillable = [
         "title", "slug", "description",
         "price", "old_price",
-        "image", "inStock", "category_id","author_id"
+        "image", "inStock", "category_id", "author_id"
+    ];
+
+    public $sortable = [
+        "id", "title", "slug", "description",
+        "price", "old_price",
+        "image", "inStock", "category_id", "author_id"
     ];
 
     public function getRouteKeyName()

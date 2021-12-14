@@ -3,12 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Order extends Model
 {
+    use Sortable;
+
     //
     protected $fillable = [
         "user_id", "status", "qty",
+        "price", "total",
+        "paid", "delivered"
+    ];
+
+    public $sortable = [
+        "id", "user_id", "status", "qty",
         "price", "total",
         "paid", "delivered"
     ];

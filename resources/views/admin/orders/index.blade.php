@@ -25,14 +25,14 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Client</th>
-                        <th>Status</th>
-                        <th>Qty(N° Products)</th>
-                        <th>Price</th>
-                        <th>Total</th>
-                        <th>Paid</th>
-                        <th>Delivered</th>
+                        <th>@sortablelink('id')</th>
+                        <th>@sortablelink('user.name','Client')</th>
+                        <th>@sortablelink('status')</th>
+                        <th>@sortablelink('qty','Qty(N° Products)')</th>
+                        <th>@sortablelink('price')</th>
+                        <th>@sortablelink('total')</th>
+                        <th>@sortablelink('paid')</th>
+                        <th>@sortablelink('delivered')</th>
                         <th></th>
                     </tr>
                 </thead>

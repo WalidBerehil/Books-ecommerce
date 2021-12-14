@@ -28,11 +28,11 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>slug</th>
-                        <th>created_at</th>
-                        <th>updated_at</th>
+                        <th>@sortablelink('id')</th>
+                        <th>@sortablelink('title')</th>
+                        <th>@sortablelink('slug')</th>
+                        <th>@sortablelink('created_at')</th>
+                        <th>@sortablelink('updated_at')</th>
 
                         <th></th>
                     </tr>

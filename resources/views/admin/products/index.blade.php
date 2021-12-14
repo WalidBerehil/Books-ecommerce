@@ -29,12 +29,12 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Id</th>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>Qty</th>
-                        <th>Price</th>
-                        <th>In Stock</th>
+                        <th>@sortablelink('id')</th>
+                        <th>@sortablelink('title')</th>
+                        <th>@sortablelink('description')</th>
+                        <th>@sortablelink('inStock','qty')</th>
+                        <th>@sortablelink('price')</th>
+                        <th>in Stock</th>
                         <th>Image</th>
                         <th>Category</th>
                         <th>Author</th>
