@@ -7,8 +7,7 @@
             <div class="card">
                 <h3 class="card-header">{{ $product->title }}</h3>
                 <div class="card-img-top">
-                    <img class="img-fluid w-100" src="{{ asset($product->image) }}"
-                        alt="{{ $product->title }}">
+                    <img class="img-fluid w-100" src="{{ asset($product->image) }}" alt="{{ $product->title }}">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">
@@ -35,13 +34,13 @@
                     </p>
                     <p class="font-weight-bold">
                         @if($product->inStock > 0)
-                            <span class="text-success">
-                                In Stock
-                            </span>
+                        <span class="text-success">
+                            In Stock
+                        </span>
                         @else
-                            <span class="text-danger">
-                                N/A
-                            </span>
+                        <span class="text-danger">
+                            N/A
+                        </span>
                         @endif
                     </p>
                 </div>
@@ -54,19 +53,31 @@
                     <label for="qty" class="label-input">
                         Qty :
                     </label>
-                    <input type="number" name="qty" id="qty"
-                        value="1"
-                        placeholder="Quantité"
-                        max="{{ $product->inStock }}"
-                        min="1"
-                        class="form-control"
-                    >
+                    @if($product->inStock > 0)
+                    <input type="number" name="qty" id="qty" value="1" placeholder="Quantité" max="{{ $product->inStock }}" min="1" class="form-control">
+
+                    @else
+                    <span class="text-danger">
+                        <input type="number" name="qty" id="qty" value="0" placeholder="Quantité" max="{{ $product->inStock }}" min="0" class="form-control">
+
+                    </span>
+                    @endif
                 </div>
                 <div class="form-group">
+
+                    @if($product->inStock > 0)
                     <button type="submit" class="btn text-white btn-block bg-dark">
                         <i class="fa fa-shopping-cart"></i>
                         Add to cart
                     </button>
+                    @else
+                    <span class="text-danger">
+                        <p style="cursor: default;" aria-disabled="" class="btn text-white btn-block bg-outofstock">
+                            <i class="fa fa-shopping-cart"></i>
+                            Out of stock
+                        </p>
+                    </span>
+                    @endif
                 </div>
             </form>
         </div>

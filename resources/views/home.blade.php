@@ -24,9 +24,9 @@
                     <div class="row">
                         @foreach ($products as $product)
                         <div class="col-md-6 mb-2 shadow-sm">
-                            <div class="card" style="width:18rem,height:100%">
+                            <div class="card" style="width:100%;height:100%">
                                 <div class="card-img-top">
-                                    <img class="img-fluid rounded" src="{{ asset($product->image) }}" alt="{{ $product->title }}">
+                                    <img class="img-fluid rounded" src="{{ asset($product->image) }}" alt="{{ $product->title }}" style="width: 327px;height: 235px;">
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">
@@ -44,6 +44,17 @@
                                     </p>
                                     <p class="card-text">
                                         {{ Str::limit($product->description,100) }}
+                                    </p>
+                                    <p class="font-weight-bold">
+                                        @if($product->inStock > 0)
+                                        <span class="text-success">
+                                            In Stock
+                                        </span>
+                                        @else
+                                        <span class="text-danger">
+                                            N/A
+                                        </span>
+                                        @endif
                                     </p>
                                     <a href="{{ route("products.show",$product->slug) }}" class="btn btn-outline-primary">
                                         <i class="fas fa-eye"></i>

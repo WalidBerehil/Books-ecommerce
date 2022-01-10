@@ -2,7 +2,7 @@
     # Activate your account
 
 @component('mail::panel')
-    to activate your account
+    To activate your account
 @endcomponent
 
 @component('mail::button',['url' => $url])

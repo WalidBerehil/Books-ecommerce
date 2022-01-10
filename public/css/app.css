@@ -7100,6 +7100,9 @@ button.bg-light:focus {
 .bg-dark {
     background-color: #343a40 !important;
 }
+.bg-outofstock {
+    background-color: #950303 !important;
+}
 
 a.bg-dark:hover,
 a.bg-dark:focus,

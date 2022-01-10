@@ -32,7 +32,7 @@ class ActivateYourAccount extends Mailable
      */
     public function build()
     {
-        return $this->from('dcodingshop@contact.com')
+        return $this->from('BiblioApp@contact.com')
             ->markdown('emails.activate_user_account');
     }
 }

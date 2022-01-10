@@ -70,7 +70,7 @@ class AdminController extends Controller
                 })->orwhereHas('author', function ($query) {
                     $query->where('name', 'like', '%' . request('search') . '%');
                 })
-                    ->sortable()->paginate(5),
+                    ->sortable()->latest()->paginate(5),
 
 
                 "categories" => Category::has("products")->get(),
@@ -78,7 +78,7 @@ class AdminController extends Controller
             ]);
         } else {
             return view('admin.products.index')->with([
-                "products" => Product::sortable()->paginate(5),
+                "products" => Product::sortable()->latest()->paginate(5),
                 "categories" => Category::has("products")->get(),
                 "authors" => Author::has("products")->get(),
             ]);
@@ -104,12 +104,12 @@ class AdminController extends Controller
                         ->orWhere('phone', 'like', request('search'))
                         ->orWhere('country', 'like', request('search'))
                         ->orWhere('city', 'like', request('search'));
-                })->sortable()->paginate(5),
+                })->sortable()->latest()->paginate(5),
 
             ]);
         } else {
             return view('admin.orders.index')->with([
-                "orders" => Order::sortable()->paginate(5)
+                "orders" => Order::sortable()->latest()->paginate(5)
             ]);
         }
 
@@ -125,12 +125,12 @@ class AdminController extends Controller
                 "categories" => Category::where(function ($query) {
                     $query->where('title', 'like', '%' . request('search') . '%')
                         ->orWhere('slug', 'like', '%' . request('search') . '%');
-                })->sortable()->paginate(5),
+                })->sortable()->latest()->paginate(5),
 
             ]);
         } else {
             return view('admin.categories.index')->with([
-                "categories" => Category::sortable()->paginate(5)
+                "categories" => Category::sortable()->latest()->paginate(5)
             ]);
         }
 
@@ -147,12 +147,12 @@ class AdminController extends Controller
                 "authors" => Author::where(function ($query) {
                     $query->where('name', 'like', '%' . request('search') . '%')
                         ->orWhere('slug', 'like', '%' . request('search') . '%');
-                })->sortable()->paginate(5),
+                })->sortable()->latest()->paginate(5),
 
             ]);
         } else {
             return view('admin.authors.index')->with([
-                "authors" => Author::sortable()->paginate(5)
+                "authors" => Author::sortable()->latest()->paginate(5)
             ]);
         }
 
