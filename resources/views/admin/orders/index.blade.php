@@ -8,27 +8,34 @@
         </div>
         <div class="col-md-8">
             <!--Search -->
-            <div>
+
+            <div class="searchparentadmin">
+
                 <form method="get" action="{{ route("admin.orders") }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <input type="text" name="search" placeholder="Search" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">
-                            Submit
-                        </button>
+
+
+                    <div class="main-search-input-wrap">
+                        <div class="main-search-input fl-wrap">
+                            <div class="main-search-input-item"> <input type="text" name="search" placeholder="Search Orders..."> </div> <button type="submit" class="main-search-button">Search</button>
+                        </div>
                     </div>
                 </form>
+
+
             </div>
+
+
+        </div>
+        <div class="col-md-12">
             <!--End of Search -->
-            <table class="table table-hover">
+            <table class="table table-hover fix-th-width">
                 <thead>
                     <tr>
                         <th>@sortablelink('id')</th>
                         <th>@sortablelink('user.name','Client')</th>
                         <th>@sortablelink('status')</th>
-                        <th>@sortablelink('qty','Qty(N° Products)')</th>
+                        <th>@sortablelink('qty','Nb Products')</th>
                         <th>@sortablelink('price')</th>
                         <th>@sortablelink('total')</th>
                         <th>@sortablelink('paid')</th>
@@ -63,6 +70,7 @@
                             <a href="{{ route("orders.show",$order->id) }}" class="btn btn-sm btn-warning mr-2 small-icon-action">
                                 <i class="fa fa-info"></i>
                             </a>
+                            @if(!$order->paid || !$order->delivered)
                             <form id="update {{ $order->id }}" method="POST" action="{{ route("orders.update",$order->id) }}">
                                 @csrf
                                 @method("PUT")
@@ -73,6 +81,11 @@
                                     <i class="fa fa-check"></i>
                                 </button>
                             </form>
+                            @else
+                            <button class="btn btn-sm btn-success-PaidDelivered small-icon-action mr-2">
+                                    <i class="fa fa-check"></i>
+                                </button>
+                            @endif
                             <form id="{{ $order->id }}" method="POST" action="{{ route("orders.destroy",$order->id) }}">
                                 @csrf
                                 @method("DELETE")

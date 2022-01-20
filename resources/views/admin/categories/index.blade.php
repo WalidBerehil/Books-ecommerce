@@ -8,24 +8,37 @@
         </div>
         <div class="col-md-8">
             <!--Search -->
-            <div>
+
+
+            <div class="searchparentadmin">
+
                 <form method="get" action="{{ route("admin.categories") }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <input type="text" name="search" placeholder="Search" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">
-                            Submit
-                        </button>
+
+
+                    <div class="main-search-input-wrap">
+                        <div class="main-search-input fl-wrap">
+                            <div class="main-search-input-item"> <input type="text" name="search" placeholder="Search Orders..."> </div> <button type="submit" class="main-search-button">Search</button>
+                        </div>
                     </div>
                 </form>
+
+
             </div>
             <!--End of Search -->
+
+
+        </div>
+
+        <div class="col-md-12 text-center">
             <a href="{{ route("categories.create") }}" class="btn btn-primary my-2">
                 <i class="fa fa-plus"></i>
             </a>
-            <table class="table table-hover">
+        </div>
+
+        <div class="col-md-12">
+
+            <table class="table table-hover fix-th-width">
                 <thead>
                     <tr>
                         <th>@sortablelink('id')</th>

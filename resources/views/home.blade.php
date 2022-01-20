@@ -1,29 +1,39 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
     <div class="row">
-        <form method="get" action="{{ route("home") }}" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">
-                <input type="text" name="search" placeholder="Search" class="form-control">
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">
-                    Submit
-                </button>
-            </div>
-        </form>
+        <div class="searchparent">
+
+            <form method="get" action="{{ route("home") }}" enctype="multipart/form-data">
+                @csrf
+
+
+                <div class="main-search-input-wrap">
+                    <div class="main-search-input fl-wrap">
+                        <div class="main-search-input-item"> <input type="text" name="search" placeholder="Search Products..."> </div> <button type="submit" class="main-search-button">Search</button>
+                    </div>
+                </div>
+            </form>
+
+
+        </div>
+
     </div>
+
+
+
     <div class="row">
 
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card">
                 <h3 class="card-header">New Products !</h3>
                 <div class="card-body">
                     <div class="row">
                         @foreach ($products as $product)
-                        <div class="col-md-6 mb-2 shadow-sm">
+                        <div class="col-md-3 mb-2 shadow-sm">
                             <div class="card" style="width:100%;height:100%">
                                 <div class="card-img-top">
                                     <img class="img-fluid rounded" src="{{ asset($product->image) }}" alt="{{ $product->title }}" style="width: 327px;height: 235px;">
@@ -36,11 +46,13 @@
                                         <span class="text-muted">
                                             {{ $product->price }} DH
                                         </span>
+                                        @if($product->old_price)
                                         <span class="text-danger">
                                             <strike>
                                                 {{ $product->old_price }} DH
                                             </strike>
                                         </span>
+                                        @endif
                                     </p>
                                     <p class="card-text">
                                         {{ Str::limit($product->description,100) }}
@@ -71,7 +83,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="col-md-12">
                 <div class="list-group">
                     <li class="list-group-item active">

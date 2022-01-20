@@ -23,11 +23,13 @@
                         <span class="text-muted">
                             {{ $product->price }} $
                         </span>
+                        @if($product->old_price)
                         <span class="text-danger">
                             <strike>
                                 {{ $product->old_price }} $
                             </strike>
                         </span>
+                        @endif
                     </p>
                     <p class="card-text">
                         {{ $product->description }}

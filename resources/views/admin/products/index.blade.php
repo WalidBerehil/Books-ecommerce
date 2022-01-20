@@ -8,34 +8,49 @@
         </div>
         <div class="col-md-8">
             <!--Search -->
-            <div>
+
+            <div class="searchparentadmin">
+
                 <form method="get" action="{{ route("admin.products") }}" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group">
-                        <input type="text" name="search" placeholder="Search" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">
-                            Submit
-                        </button>
+
+
+                    <div class="main-search-input-wrap">
+                        <div class="main-search-input fl-wrap">
+                            <div class="main-search-input-item"> <input type="text" name="search" placeholder="Search Products..."> </div> <button type="submit" class="main-search-button">Search</button>
+                        </div>
                     </div>
                 </form>
-            </div>
-            <!--End of Search -->
 
+
+            </div>
+
+
+        </div>
+    </div>
+    <div class="row justify-content-center">
+
+        <div class="col-md-12 text-center">
             <a href="{{ route("products.create") }}" class="btn btn-primary my-2">
                 <i class="fa fa-plus"></i>
             </a>
-            <table class="table table-hover">
+        </div>
+
+        <div class="col-md-12">
+            <!--Search -->
+
+            <!--End of Search -->
+
+            <table class="table table-hover fix-th-width">
                 <thead>
                     <tr>
+                        <th>Image</th>
                         <th>@sortablelink('id')</th>
                         <th>@sortablelink('title')</th>
                         <th>@sortablelink('description')</th>
                         <th>@sortablelink('inStock','qty')</th>
                         <th>@sortablelink('price')</th>
                         <th>in Stock</th>
-                        <th>Image</th>
                         <th>Category</th>
                         <th>Author</th>
                         <th></th>
@@ -44,6 +59,9 @@
                 <tbody>
                     @foreach ($products as $product)
                     <tr>
+                        <td>
+                            <img src="{{ asset($product->image) }}" alt="{{ $product->title }}" width="50" height="50" class="img-fluid rounded">
+                        </td>
                         <td>{{ $product->id }}</td>
                         <td>{{ $product->title}}</td>
                         <td>{{ Str::limit($product->description,50) }}</td>
@@ -56,9 +74,7 @@
                             <i class="fa fa-times text-danger"></i>
                             @endif
                         </td>
-                        <td>
-                            <img src="{{ asset($product->image) }}" alt="{{ $product->title }}" width="50" height="50" class="img-fluid rounded">
-                        </td>
+
                         <td>
                             {{ $product->category->title }}
                         </td>
