@@ -3,16 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 card p-3">
+        <div class="col-md-12 card p-3 p3">
             <h4 class="text-dark">Your cart</h4>
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th>Image</th>
                         <th>Title</th>
-                        <th>Qty</th>
-                        <th>Price</th>
-                        <th>Total</th>
+                        <th>Qautité</th>
+                        <th>Prix</th>
+                        <th>Totale</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -60,7 +60,7 @@
                     @endforeach
                     <tr class="text-dark font-weight-bold">
                         <td colspan="3" class="border border-success">
-                            Total
+                            Totale
                         </td>
                         <td colspan="3" class="border border-success">
                             {{ Cart::getSubtotal() }} $
@@ -75,7 +75,7 @@
                 </a>
 
 
-                <button type="button" class="btn btn-primary mt-3" data-toggle="modal" data-target="#exampleModalCenter">
+                <button type="button" class="btn btn-primary mt-3 mt" data-toggle="modal" data-target="#exampleModalCenter">
                     Pay {{ Cart::getSubtotal() }} $ via Cash
                 </button>
             </div>

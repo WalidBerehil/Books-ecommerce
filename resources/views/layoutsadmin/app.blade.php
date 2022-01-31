@@ -22,8 +22,8 @@
 </head>
 
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <div id="app" class="con">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm bg-n">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/admin') }}">
                     Admin

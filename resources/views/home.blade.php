@@ -13,7 +13,7 @@
 
                 <div class="main-search-input-wrap">
                     <div class="main-search-input fl-wrap">
-                        <div class="main-search-input-item"> <input type="text" name="search" placeholder="Search Products..."> </div> <button type="submit" class="main-search-button">Search</button>
+                        <div class="main-search-input-item"> <input type="text" name="search" placeholder="Search Products..."> </div> <button type="submit" class="main-search-button main-sea">Search</button>
                     </div>
                 </div>
             </form>
@@ -29,8 +29,8 @@
 
         <div class="col-md-9">
             <div class="card">
-                <h3 class="card-header">New Products !</h3>
-                <div class="card-body">
+                <h3 class="card-header card-hea">New Products !</h3>
+                <div class="card-body card-bd">
                     <div class="row">
                         @foreach ($products as $product)
                         <div class="col-md-3 mb-2 shadow-sm">
@@ -38,18 +38,19 @@
                                 <div class="card-img-top">
                                     <img class="img-fluid rounded" src="{{ asset($product->image) }}" alt="{{ $product->title }}" style="width: 327px;height: 235px;">
                                 </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">
+                                <div class="card-body card-bd">
+                                    <h5 class="card-title title-height">
                                         {{ $product->title }}
                                     </h5>
                                     <p class="d-flex flex-row justify-content-between align-items-center">
                                         <span class="text-muted">
                                             {{ $product->price }} DH
-                                        </span>
+                                        </span> 
                                         @if($product->old_price)
+                                        
                                         <span class="text-danger">
                                             <strike>
-                                                {{ $product->old_price }} DH
+                                              {{ $product->old_price }} DH
                                             </strike>
                                         </span>
                                         @endif
@@ -59,7 +60,7 @@
                                     </p>
                                     <p class="font-weight-bold">
                                         @if($product->inStock > 0)
-                                        <span class="text-success">
+                                        <span class="text-success txt-succ">
                                             In Stock
                                         </span>
                                         @else
@@ -68,8 +69,8 @@
                                         </span>
                                         @endif
                                     </p>
-                                    <a href="{{ route("products.show",$product->slug) }}" class="btn btn-outline-primary">
-                                        <i class="fas fa-eye"></i>
+                                    <a href="{{ route("products.show",$product->slug) }}" class="btn btn-outline-primary bt-primary">
+                                        info More
                                     </a>
                                 </div>
                             </div>
@@ -86,7 +87,7 @@
         <div class="col-md-3">
             <div class="col-md-12">
                 <div class="list-group">
-                    <li class="list-group-item active">
+                    <li class="list-group-item active list">
                         Categories
                     </li>
                     @foreach ($categories as $category)
@@ -99,7 +100,7 @@
             </div>
             <div class="col-md-12">
                 <div class="list-group">
-                    <li class="list-group-item active">
+                    <li class="list-group-item active list">
                         Author
                     </li>
                     @foreach ($authors as $author)

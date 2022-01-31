@@ -37,7 +37,7 @@
 
                             </tr>
                             @endforeach
-                            <tr class="text-dark font-weight-bold">
+                            <tr class="text-dark font-weight-bold bold">
                                 <td colspan="3" class="border border-success">
                                     Total
                                 </td>

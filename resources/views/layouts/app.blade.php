@@ -23,7 +23,7 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm bg-n">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -104,7 +104,7 @@
                 @include('layouts.alerts')
             </div>
         </div>
-        <main class="py-4">
+        <main class="py-4 py-44 ">
             @yield('content')
         </main>
     </div>

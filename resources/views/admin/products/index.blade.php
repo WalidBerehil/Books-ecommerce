@@ -28,7 +28,7 @@
 
         </div>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center rw">
 
         <div class="col-md-12 text-center">
             <a href="{{ route("products.create") }}" class="btn btn-primary my-2">

@@ -5,8 +5,8 @@
     <div class="row">
         <div class="col-md-8">
             <div class="card">
-                <h3 class="card-header">{{ $product->title }}</h3>
-                <div class="card-img-top">
+                <h3 class="card-header head">{{ $product->title }}</h3>
+                <div class="card-img-top top">
                     <img class="img-fluid w-100" src="{{ asset($product->image) }}" alt="{{ $product->title }}">
                 </div>
                 <div class="card-body">
@@ -49,18 +49,19 @@
             </div>
         </div>
         <div class="col-md-4">
+           <div class="form">
             <form action="{{ route("add.cart",$product->slug) }}" method="post">
                 @csrf
                 <div class="form-group">
-                    <label for="qty" class="label-input">
-                        Qty :
+                    <label for="qty" class="label-input inpu">
+                        Quantité :
                     </label>
                     @if($product->inStock > 0)
-                    <input type="number" name="qty" id="qty" value="1" placeholder="Quantité" max="{{ $product->inStock }}" min="1" class="form-control">
+                    <input type="number" name="qty" id="qty" value="1" placeholder="Quantité" max="{{ $product->inStock }}" min="1" class="form-control f-cntr">
 
                     @else
                     <span class="text-danger">
-                        <input type="number" name="qty" id="qty" value="0" placeholder="Quantité" max="{{ $product->inStock }}" min="0" class="form-control">
+                        <input type="number" name="qty" id="qty" value="0" placeholder="Quantité" max="{{ $product->inStock }}" min="0" class="form-control f-cntr">
 
                     </span>
                     @endif
@@ -68,7 +69,7 @@
                 <div class="form-group">
 
                     @if($product->inStock > 0)
-                    <button type="submit" class="btn text-white btn-block bg-dark">
+                    <button type="submit" class="btn text-white btn-block bg-dark  bh">
                         <i class="fa fa-shopping-cart"></i>
                         Add to cart
                     </button>
@@ -81,7 +82,8 @@
                     </span>
                     @endif
                 </div>
-            </form>
+            </form> </br>
+            </div>
         </div>
     </div>
 </div>

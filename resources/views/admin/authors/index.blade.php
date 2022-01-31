@@ -27,7 +27,7 @@
             <!--End of Search -->
             </div>
 
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center ">
             <a href="{{ route("authors.create") }}" class="btn btn-primary my-2">
                 <i class="fa fa-plus"></i>
             </a>

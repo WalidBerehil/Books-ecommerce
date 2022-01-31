@@ -12,6 +12,7 @@
                 <div class="card-body">
                     <form method="post" action="{{ route("authors.store") }}" enctype="multipart/form-data">
                         @csrf
+                       
                         <div class="form-group">
                             <input type="text"
                             name="name"
@@ -23,6 +24,7 @@
                                 Submit
                             </button>
                         </div>
+                   
                     </form>
                 </div>
             </div>
