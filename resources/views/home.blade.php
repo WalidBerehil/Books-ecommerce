@@ -29,7 +29,7 @@
 
         <div class="col-md-9">
             <div class="card">
-                <h3 class="card-header card-hea">New Products !</h3>
+                <h3 class="card-header card-hea">Books</h3>
                 <div class="card-body card-bd">
                     <div class="row">
                         @foreach ($products as $product)
@@ -70,7 +70,7 @@
                                         @endif
                                     </p>
                                     <a href="{{ route("products.show",$product->slug) }}" class="btn btn-outline-primary bt-primary">
-                                        info More
+                                    More info 
                                     </a>
                                 </div>
                             </div>

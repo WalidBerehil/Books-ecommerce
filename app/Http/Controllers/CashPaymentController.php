@@ -32,7 +32,7 @@ class CashPaymentController extends Controller
             }
             $order = Order::create([
                 "user_id" => auth()->user()->id,
-                "status" => "waiting...",
+                "status" => "Shipping",
                 "total" => $total,
                 //Test if it work ( old value was : 1 )
                 "qty" => \Cart::getContent()->count(),

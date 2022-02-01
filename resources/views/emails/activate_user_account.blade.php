@@ -11,6 +11,6 @@
 
 Thanks.
 <br>
-team {{ config("app.name") }}
+team e-Biblio
 
 @endcomponent

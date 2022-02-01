@@ -62,7 +62,7 @@
                         <td colspan="3" class="border border-success">
                             Totale
                         </td>
-                        <td colspan="3" class="border border-success">
+                        <td colspan="3" class="border border-success" style="font-family: sans-serif;">
                             {{ Cart::getSubtotal() }} $
                         </td>
                     </tr>

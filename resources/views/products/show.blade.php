@@ -69,7 +69,7 @@
                 <div class="form-group">
 
                     @if($product->inStock > 0)
-                    <button type="submit" class="btn text-white btn-block bg-dark  bh">
+                    <button type="submit" class="btn text-white btn-block bg-dark">
                         <i class="fa fa-shopping-cart"></i>
                         Add to cart
                     </button>

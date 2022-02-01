@@ -75,6 +75,9 @@ body {
     color: #212529;
     text-align: left;
     background-color: #f8fafc;
+
+    background-image: url(http://127.0.0.1:8000/images/products/bookshelves.jpg);
+    overflow-x: hidden;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -7111,7 +7114,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-    background-color: #343a40 !important;
+    background-color: #209b33 !important;
 }
 .bg-outofstock {
     background-color: #950303 !important;
@@ -11252,7 +11255,7 @@ a.text-dark:focus {
     background: #F7DC6F;
 }
 .py-44{
-    background-image: url(http://127.0.0.1:8000/images/products/biblio.jpg);
+    background-image: url(http://127.0.0.1:8000/images/products/bookshelves.jpg);
 }
 .main-sea{
     background: #F7DC6F ;
@@ -11361,7 +11364,7 @@ a.text-dark:focus {
 
 }
 .py-4{
-    background-image: url(http://127.0.0.1:8000/images/products/biblio.jpg);
+    background-image: url(http://127.0.0.1:8000/images/products/bookshelves.jpg);
 }
 .rw{
    background:  #D5DBDB;

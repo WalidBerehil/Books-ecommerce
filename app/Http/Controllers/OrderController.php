@@ -112,7 +112,8 @@ class OrderController extends Controller
         //
         $order->update([
             "delivered" => 1,
-            "paid" => 1
+            "paid" => 1,
+            "status" => "Delivered"
 
         ]);
         return redirect()->back()->withSuccess("Order updated");

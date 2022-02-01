@@ -41,7 +41,7 @@
                                 <td colspan="3" class="border border-success">
                                     Total
                                 </td>
-                                <td colspan="3" class="border border-success">
+                                <td colspan="3" class="border border-success" style="font-family: sans-serif;">
                                     {{ $total }} $
                                 </td>
                             </tr>
