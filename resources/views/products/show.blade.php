@@ -36,7 +36,7 @@
                     </p>
                     <p class="font-weight-bold">
                         @if($product->inStock > 0)
-                        <span class="text-success">
+                        <span class="txt-succ">
                             In Stock
                         </span>
                         @else
@@ -54,7 +54,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="qty" class="label-input inpu">
-                        Quantité :
+                        Quantité (Max : {{ $product->inStock }}):
                     </label>
                     @if($product->inStock > 0)
                     <input type="number" name="qty" id="qty" value="1" placeholder="Quantité" max="{{ $product->inStock }}" min="1" class="form-control f-cntr">
@@ -69,13 +69,13 @@
                 <div class="form-group">
 
                     @if($product->inStock > 0)
-                    <button type="submit" class="btn text-white btn-block bg-dark">
+                    <button type="submit" class="btn text-white btn-block bg-dark bh">
                         <i class="fa fa-shopping-cart"></i>
                         Add to cart
                     </button>
                     @else
                     <span class="text-danger">
-                        <p style="cursor: default;" aria-disabled="" class="btn text-white btn-block bg-outofstock">
+                        <p style="cursor: default;" aria-disabled="" class="btn text-white btn-block bg-outofstock bh">
                             <i class="fa fa-shopping-cart"></i>
                             Out of stock
                         </p>

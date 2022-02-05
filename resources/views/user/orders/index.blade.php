@@ -8,11 +8,10 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        
                         <th>Client</th>
                         <th>Status</th>
-                        <th>Qty(N° Products)</th>
-                        <th>Price</th>
+                        <th>Nb Product</th>
                         <th>Total</th>
                         <th>Paid</th>
                         <th>Delivered</th>
@@ -22,22 +21,20 @@
                 <tbody>
                     @foreach ($orders as $order)
                     <tr>
-                        <td>{{ $order->id }}</td>
                         <td>{{ $order->user->name }}</td>
                         <td>{{ $order->status }}</td>
                         <td>{{ $order->qty }}</td>
-                        <td>{{ $order->price }} $</td>
                         <td>{{ $order->total }} $</td>
                         <td>
                             @if($order->paid)
-                            <i class="fa fa-check text-success"></i>
+                            <i class="fa fa-check txt-succ"></i>
                             @else
                             <i class="fa fa-hourglass-half text-danger"></i>
                             @endif
                         </td>
                         <td>
                             @if($order->delivered)
-                            <i class="fa fa-check text-success"></i>
+                            <i class="fa fa-check txt-succ"></i>
                             @else
                             <i class="fa fa-hourglass-half text-danger"></i>
                             @endif

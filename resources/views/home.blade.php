@@ -101,7 +101,7 @@
             <div class="col-md-12">
                 <div class="list-group">
                     <li class="list-group-item active list">
-                        Author
+                        Authors
                     </li>
                     @foreach ($authors as $author)
                     <a href="{{ route("author.products",$author->slug) }}" class="list-group-item list-group-item-action">

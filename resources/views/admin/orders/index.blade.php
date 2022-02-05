@@ -36,7 +36,6 @@
                         <th>@sortablelink('user.name','Client')</th>
                         <th>@sortablelink('status')</th>
                         <th>@sortablelink('qty','Nb Products')</th>
-                        <th>@sortablelink('price')</th>
                         <th>@sortablelink('total')</th>
                         <th>@sortablelink('paid')</th>
                         <th>@sortablelink('delivered')</th>
@@ -50,18 +49,17 @@
                         <td>{{ $order->user->name }}</td>
                         <td>{{ $order->status }}</td>
                         <td>{{ $order->qty }}</td>
-                        <td>{{ $order->price }} $</td>
                         <td>{{ $order->total }} $</td>
                         <td>
                             @if($order->paid)
-                            <i class="fa fa-check text-success"></i>
+                            <i class="fa fa-check txt-succ"></i>
                             @else
                             <i class="fa fa-hourglass-half text-danger"></i>
                             @endif
                         </td>
                         <td>
                             @if($order->delivered)
-                            <i class="fa fa-check text-success"></i>
+                            <i class="fa fa-check txt-succ"></i>
                             @else
                             <i class="fa fa-hourglass-half text-danger"></i>
                             @endif

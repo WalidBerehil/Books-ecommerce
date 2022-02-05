@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <h3 class="card-header">{{ $order->id }}</h3>
+                <h3 class="card-header">Order</h3>
                 <div class="card-img-top">
 
                 </div>

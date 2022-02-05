@@ -69,7 +69,7 @@
                         <td>{{ $product->price }} DH</td>
                         <td>
                             @if($product->inStock > 0)
-                            <i class="fa fa-check text-success"></i>
+                            <i class="fa fa-check txt-succ"></i>
                             @else
                             <i class="fa fa-times text-danger"></i>
                             @endif

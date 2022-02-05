@@ -70,9 +70,9 @@
             </table>
             @if(Cart::getSubtotal() > 0)
             <div class="form-group">
-                <a style="cursor: default;" class="btn btn-secondary mt-3" aria-disabled="">
+                <!-- <a style="cursor: default;" class="btn btn-secondary mt-3" aria-disabled="">
                     Pay {{ Cart::getSubtotal() }} $ via PayPal (soon)
-                </a>
+                </a> -->
 
 
                 <button type="button" class="btn btn-primary mt-3 mt" data-toggle="modal" data-target="#exampleModalCenter">
